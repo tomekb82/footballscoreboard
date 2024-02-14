@@ -18,11 +18,12 @@ class Match {
     }
 
     void updateScore(Score homeScore, Score guestScore){
-
+        this.homeScore = homeScore;
+        this.guestScore = guestScore;
     }
 
-    int calculateTotalScore() {
-        return -1;
+    Score calculateTotalScore() {
+        return Score.of(homeScore.getScore() + getGuestScore().getScore());
     }
 
     public Score getHomeScore() {

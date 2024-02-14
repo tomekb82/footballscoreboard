@@ -4,6 +4,9 @@ class Score {
     private final int score;
 
     private Score(int score) {
+        if (score < 0) {
+            throw new IllegalArgumentException("Score could not be negative");
+        }
         this.score = score;
     }
 

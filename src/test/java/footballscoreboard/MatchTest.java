@@ -18,7 +18,7 @@ class MatchTest {
 
         //then
         assertEquals(1, match.getHomeScore().getScore());
-        assertEquals(2, match.getHomeScore().getScore());
+        assertEquals(2, match.getGuestScore().getScore());
     }
 
     @Test
@@ -30,9 +30,9 @@ class MatchTest {
         match.updateScore(homeScore, guestScore);
 
         //when
-        int totalScore = match.calculateTotalScore();
+        Score totalScore = match.calculateTotalScore();
 
         //then
-        assertEquals(3, totalScore);
+        assertEquals(3, totalScore.getScore());
     }
 }
