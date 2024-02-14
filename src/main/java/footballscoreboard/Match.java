@@ -14,6 +14,9 @@ class Match {
     }
 
     static Match of(Team homeTeam, Team guestTeam) {
+        if (homeTeam == null || guestTeam == null) {
+            throw new IllegalStateException("Two teams are required to play a match");
+        }
         return new Match(homeTeam, guestTeam);
     }
 
@@ -23,15 +26,23 @@ class Match {
     }
 
     Score calculateTotalScore() {
-        return Score.of(homeScore.getScore() + getGuestScore().getScore());
+        return Score.of(homeScore.getValue() + getGuestScore().getValue());
     }
 
-    public Score getHomeScore() {
+    Score getHomeScore() {
         return homeScore;
     }
 
-    public Score getGuestScore() {
+    Score getGuestScore() {
         return guestScore;
+    }
+
+    Team getHomeTeam() {
+        return homeTeam;
+    }
+
+    Team getGuestTeam() {
+        return guestTeam;
     }
 
 }

@@ -1,24 +1,24 @@
 package footballscoreboard;
 
 class Score {
-    private final int score;
+    private final int value;
 
-    private Score(int score) {
-        if (score < 0) {
+    private Score(int value) {
+        if (value < 0) {
             throw new IllegalArgumentException("Score could not be negative");
         }
-        this.score = score;
+        this.value = value;
     }
 
-    static Score of(int score) {
-        return new Score(score);
+    static Score of(int value) {
+        return new Score(value);
     }
 
     static Score zero(){
         return new Score(0);
     }
 
-    public int getScore() {
-        return score;
+    int getValue() {
+        return value;
     }
 }

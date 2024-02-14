@@ -3,7 +3,7 @@ package footballscoreboard;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Scoreboard {
+class Scoreboard {
 
     private List<Match> matches;
 
@@ -26,5 +26,4 @@ public class Scoreboard {
     MatchSummary getMatchSummary() {
         return null;
     }
-
 }
