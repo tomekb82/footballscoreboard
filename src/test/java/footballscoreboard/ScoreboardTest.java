@@ -27,7 +27,7 @@ class ScoreboardTest {
         Score guestScore = Score.zero();
 
         //when
-        Exception exception = assertThrows(IllegalStateException.class,
+        Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> scoreboard.updateScore(-1, homeScore, guestScore));
 
         //then
@@ -43,7 +43,7 @@ class ScoreboardTest {
 
         //when
         Exception exception = assertThrows(IllegalStateException.class,
-                () -> scoreboard.updateScore(1, homeScore, guestScore));
+                () -> scoreboard.updateScore(0, homeScore, guestScore));
 
         //then
         assertTrue(exception.getMessage().contains("Could not update score when match is not started"));
@@ -81,7 +81,7 @@ class ScoreboardTest {
         scoreboard.updateScore(0, homeScore, guestScore);
 
         assertEquals(1, scoreboard.getMatchSummary().matches().size());;
-        assertEquals(3, scoreboard.getMatchSummary().matches().get(0).calculateTotalScore().getValue());
+        assertEquals(3, scoreboard.getMatchSummary().matches().get(0).calculateTotalScoreValue());
     }
 
     @Test
@@ -90,7 +90,7 @@ class ScoreboardTest {
         Scoreboard scoreboard = new Scoreboard();
 
         //when
-        Exception exception = assertThrows(IllegalStateException.class,
+        Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> scoreboard.finishMatch(-1));
 
         //then

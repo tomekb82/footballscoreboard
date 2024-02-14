@@ -1,6 +1,8 @@
 package footballscoreboard;
 
-class Match {
+import java.util.Objects;
+
+class Match implements Comparable<Match>{
     private final Team homeTeam;
     private final Team guestTeam;
     private Score homeScore;
@@ -27,8 +29,8 @@ class Match {
         return this;
     }
 
-    Score calculateTotalScore() {
-        return Score.of(homeScore.getValue() + getGuestScore().getValue());
+    int calculateTotalScoreValue() {
+        return homeScore.getValue() + getGuestScore().getValue();
     }
 
     Score getHomeScore() {
@@ -47,4 +49,24 @@ class Match {
         return guestTeam;
     }
 
+    @Override
+    public int compareTo(Match o) {
+        return Integer.compare(this.calculateTotalScoreValue(), o.calculateTotalScoreValue());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Match match = (Match) o;
+        return Objects.equals(homeTeam.name(), match.homeTeam.name())
+                && Objects.equals(guestTeam.name(), match.guestTeam.name())
+                && Objects.equals(homeScore.getValue(), match.homeScore.getValue())
+                && Objects.equals(guestScore.getValue(), match.guestScore.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(homeTeam.name(), guestTeam.name(), homeScore.getValue(), guestScore.getValue());
+    }
 }

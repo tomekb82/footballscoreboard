@@ -44,9 +44,9 @@ class MatchTest {
         match.withScore(homeScore, guestScore);
 
         //when
-        Score totalScore = match.calculateTotalScore();
+        int totalScoreValue = match.calculateTotalScoreValue();
 
         //then
-        assertEquals(3, totalScore.getValue());
+        assertEquals(3, totalScoreValue);
     }
 }
