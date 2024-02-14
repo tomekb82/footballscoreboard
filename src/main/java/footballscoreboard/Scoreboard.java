@@ -2,7 +2,7 @@ package footballscoreboard;
 
 import java.util.*;
 
-class Scoreboard {
+public class Scoreboard {
 
     private List<Match> matches;
 
@@ -10,13 +10,13 @@ class Scoreboard {
         this.matches = new ArrayList<>();
     }
 
-    Scoreboard startMatch(Team homeTeam, Team guestTeam){
+    public Scoreboard startMatch(Team homeTeam, Team guestTeam){
         Match newMatch = Match.of(homeTeam, guestTeam);
         matches.add(newMatch);
         return this;
     }
 
-    Scoreboard updateScore(int matchIndex, Score homeScore, Score guestScore){
+    public Scoreboard updateScore(int matchIndex, Score homeScore, Score guestScore){
         if (matchIndex < 0) {
             throw new IllegalArgumentException("Index of a match should be positive value");
         }
@@ -29,7 +29,7 @@ class Scoreboard {
                 .orElseThrow(() -> new IllegalStateException("Could not update score when match is not started"));
     }
 
-    Scoreboard finishMatch(int matchIndex) {
+    public Scoreboard finishMatch(int matchIndex) {
         if (matchIndex < 0) {
             throw new IllegalArgumentException("Index of a match should be positive value");
         }
@@ -40,11 +40,11 @@ class Scoreboard {
         return this;
     }
 
-    int numberOfOngoingMathes() {
+    public int numberOfOngoingMathes() {
         return matches.size();
     }
 
-    MatchSummary getMatchSummary() {
+    public MatchSummary getMatchSummary() {
         Collections.sort(matches, Comparator.comparingInt(Match::calculateTotalScoreValue)
                 .thenComparing(Collections.reverseOrder()));
         Collections.reverse(matches);

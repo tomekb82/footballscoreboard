@@ -2,4 +2,4 @@ package footballscoreboard;
 
 import java.util.List;
 
-record MatchSummary(List<Match> matches) { }
+public record MatchSummary(List<Match> matches) { }

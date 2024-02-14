@@ -172,6 +172,16 @@ class ScoreboardTest {
         assertEquals("Mexico 0 - Canada 5", matchSummary.matches().get(2).print());
         assertEquals("Argentina 3 - Australia 1", matchSummary.matches().get(3).print());
         assertEquals("Germany 2 - France 2", matchSummary.matches().get(4).print());
+
+        //finally finish all matches
+        scoreboard
+            .finishMatch(4)
+            .finishMatch(3)
+            .finishMatch(2)
+            .finishMatch(1)
+            .finishMatch(0);
+
+        assertEquals(0, scoreboard.numberOfOngoingMathes());
     }
 
 }

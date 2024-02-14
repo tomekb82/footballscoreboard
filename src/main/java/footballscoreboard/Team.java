@@ -11,11 +11,11 @@ public class Team {
         this.name = name;
     }
 
-    static Team of(String name) {
+    public static Team of(String name) {
         return new Team(name);
     }
 
-    String name() {
+    public String name() {
         return name;
     }
 }

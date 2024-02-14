@@ -1,6 +1,6 @@
 package footballscoreboard;
 
-class Score {
+public class Score {
     private final int value;
 
     private Score(int value) {
@@ -10,15 +10,15 @@ class Score {
         this.value = value;
     }
 
-    static Score of(int value) {
+    public static Score of(int value) {
         return new Score(value);
     }
 
-    static Score zero(){
+    public static Score zero(){
         return new Score(0);
     }
 
-    int getValue() {
+    public int getValue() {
         return value;
     }
 }
