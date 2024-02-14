@@ -11,16 +11,21 @@ class Scoreboard {
         this.matches = new ArrayList<>();
     }
 
-    void startMatch(Team homeTeam, Team guestTeam){
+    Scoreboard startMatch(Team homeTeam, Team guestTeam){
 
+        return this;
     }
 
-    void updateScore(int matchIndex, Score score){
-
+    Scoreboard updateScore(int matchIndex, Score homeScore, Score guestScore){
+        return this;
     }
 
-    void finishMatch() {
+    Scoreboard finishMatch(int matchIndex) {
+        return this;
+    }
 
+    int numberOfOngoingMathes() {
+        return -1;
     }
 
     MatchSummary getMatchSummary() {

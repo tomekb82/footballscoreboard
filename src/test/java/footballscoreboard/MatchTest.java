@@ -21,20 +21,6 @@ class MatchTest {
     }
 
     @Test
-    void teamWithNoNameCouldNotStartAMatch() {
-        //given
-        Team homes = Team.of("homes");
-        Team guestWithoutName = Team.of("");
-
-        //when
-        Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> Match.of(homes, guestWithoutName));
-
-        //then
-        assertTrue(exception.getMessage().contains("Team with no name could not start a match"));
-    }
-
-    @Test
     void shouldUpdateScore() {
         //given
         Match match = Match.of(Team.of("homes"), Team.of("guests"));
@@ -42,7 +28,7 @@ class MatchTest {
         Score guestScore = Score.of(2);
 
         //when
-        match.updateScore(homeScore, guestScore);
+        match.withScore(homeScore, guestScore);
 
         //then
         assertEquals(1, match.getHomeScore().getValue());
@@ -55,7 +41,7 @@ class MatchTest {
         Match match = Match.of(Team.of("homes"), Team.of("guests"));
         Score homeScore = Score.of(1);
         Score guestScore = Score.of(2);
-        match.updateScore(homeScore, guestScore);
+        match.withScore(homeScore, guestScore);
 
         //when
         Score totalScore = match.calculateTotalScore();

@@ -20,9 +20,11 @@ class Match {
         return new Match(homeTeam, guestTeam);
     }
 
-    void updateScore(Score homeScore, Score guestScore){
+    Match withScore(Score homeScore, Score guestScore){
         this.homeScore = homeScore;
         this.guestScore = guestScore;
+
+        return this;
     }
 
     Score calculateTotalScore() {
