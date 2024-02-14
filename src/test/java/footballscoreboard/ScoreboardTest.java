@@ -145,6 +145,26 @@ class ScoreboardTest {
     }
 
     @Test
+    void shouldFailWhenTryToFinishMatchTwice() {
+        //given
+        Team homes = Team.of("homes");
+        Team guests = Team.of("guests");
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch(homes, guests);
+        Score homeScore = Score.of(1);
+        Score guestScore = Score.of(2);
+        scoreboard.updateScore(0, homeScore, guestScore);
+        scoreboard.finishMatch(0);
+
+        //when
+        Exception exception = assertThrows(IllegalStateException.class,
+                () -> scoreboard.finishMatch(0));
+
+        //then
+        assertTrue(exception.getMessage().contains("Could not finish a match when match is not started"));
+    }
+
+    @Test
     void shouldScoreBoardSummaryInRightOrder() {
         //given
         Scoreboard scoreboard = new Scoreboard();
