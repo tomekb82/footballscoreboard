@@ -61,12 +61,17 @@ class Match implements Comparable<Match>{
         Match match = (Match) o;
         return Objects.equals(homeTeam.name(), match.homeTeam.name())
                 && Objects.equals(guestTeam.name(), match.guestTeam.name())
-                && Objects.equals(homeScore.getValue(), match.homeScore.getValue())
-                && Objects.equals(guestScore.getValue(), match.guestScore.getValue());
+                && homeScore.getValue() == match.homeScore.getValue()
+                && guestScore.getValue() == match.guestScore.getValue();
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(homeTeam.name(), guestTeam.name(), homeScore.getValue(), guestScore.getValue());
+    }
+
+    public String print() {
+        return homeTeam.name() + " " + homeScore.getValue() + " - "
+                + guestTeam.name() + " " + guestScore.getValue();
     }
 }
